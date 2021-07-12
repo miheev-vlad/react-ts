@@ -1,5 +1,5 @@
-import React from 'react';
 import { ICard } from '../../Interfaces';
+import { CardLayout, DeleteButton } from './styles';
 
 interface Props {
     card: ICard;
@@ -8,12 +8,12 @@ interface Props {
 
 const Card = ({ card, deleteCard }: Props) => {
     return(
-        <div>
+        <CardLayout>
             <div>
                 {card.cardName}
             </div>
-            <button onClick={() => deleteCard(card.cardName)}>x</button>
-        </div>
+            <DeleteButton onClick={() => deleteCard(card.cardName)}>x</DeleteButton>
+        </CardLayout>
     )
 };
 

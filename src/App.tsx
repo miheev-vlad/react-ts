@@ -1,31 +1,34 @@
 import {FC, useEffect, useState} from 'react';
-import './App.css';
-import Column from './components/Сolumn';
+import Board from './components/Board';
+import Header from './components/Header';
+import GlobalStyle from './styles/global';
 
 const App: FC = () => {
   const [userName, setUserName] = useState<string>(localStorage.getItem('userName')! || '');
   useEffect(() => {
-    do {
-      let result = window.prompt('Please enter your name');
-      if (result && result !== '') {
-        localStorage.setItem('userName', result);
-      } else {
-        window.alert('Your name is required');
-      }
-    } while (!localStorage.getItem('userName'))
+    if (!localStorage.getItem('userName')) {
+      do {
+        let result = window.prompt('Please enter your name');
+        if (result && result !== '') {
+          localStorage.setItem('userName', result);
+          setUserName(result);
+        } else {
+          window.alert('Your name is required');
+        }
+      } while (!localStorage.getItem('userName'))
+  
+    }
   })
   return (
-    <div className="App">
+    <>
+      <GlobalStyle />
       <header>
-        <h1>Online Kanban Board</h1>
+        <Header />
       </header>
       <main>
-        <Column defaultName="TODO" identifier="Column_#1"/>
-        <Column defaultName="In Progress" identifier="Column_#2"/>
-        <Column defaultName="Testing" identifier="Column_#3"/>
-        <Column defaultName="Done" identifier="Column_#4"/>
+        <Board />
       </main>
-    </div>
+    </>
   );
 }
 
