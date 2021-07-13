@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-
 export default createGlobalStyle`
     * {
         margin: 0;
@@ -7,11 +6,9 @@ export default createGlobalStyle`
         outline: 0;
         box-sizing: border-box;
     }
-
     #root {
         margin: 0 auto;
     }
-
     body {
         background: #f0f8ff;
     }

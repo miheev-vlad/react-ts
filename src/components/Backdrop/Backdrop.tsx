@@ -1,13 +1,11 @@
-import { BackdropLayout } from "./styles";
+import { BackdropLayout } from './styles';
 
 interface Props {
-    clickLayout(): void;
+  clickLayout(): void;
 }
 
 const Backdrop = ({ clickLayout }: Props) => {
-    return(
-        <BackdropLayout onClick={clickLayout} />
-    )
+  return <BackdropLayout onClick={clickLayout} />;
 };
 
 export default Backdrop;
