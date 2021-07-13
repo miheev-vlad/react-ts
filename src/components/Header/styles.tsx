@@ -4,5 +4,5 @@ export const HeaderBrand = styled.div`
     display: flex;
     flex-wrapp: wrapp;
     justify-content: center;
-    margin: 30px 0;
+    margin: 50px 0;
 `;

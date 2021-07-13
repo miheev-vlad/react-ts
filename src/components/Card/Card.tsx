@@ -1,18 +1,24 @@
 import { ICard } from '../../Interfaces';
-import { CardLayout, DeleteButton } from './styles';
+import { CardHeader, CardLayout, CardTitle, DeleteButton } from './styles';
 
 interface Props {
     card: ICard;
+    identifier: string;
     deleteCard(cardNameToDelete: string): void;
+    clickCardTitle(event: any): void;
 }
 
-const Card = ({ card, deleteCard }: Props) => {
+const Card = ({ card, identifier, deleteCard, clickCardTitle }: Props) => {
     return(
         <CardLayout>
-            <div>
-                {card.cardName}
-            </div>
-            <DeleteButton onClick={() => deleteCard(card.cardName)}>x</DeleteButton>
+            <CardHeader>
+                <CardTitle onClick={clickCardTitle}>
+                    <a href={card.cardName} id={identifier}>{card.cardName}</a> 
+                </CardTitle>
+                <DeleteButton onClick={() => deleteCard(card.cardName)}>x</DeleteButton>
+            </CardHeader>
+            <hr></hr>
+            <p>comments: {card.comments.length}</p>
         </CardLayout>
     )
 };

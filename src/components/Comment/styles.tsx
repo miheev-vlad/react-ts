@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CardLayout = styled.div`
+export const CommentLayout = styled.div`
     border: 1px grey solid;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -21,7 +21,7 @@ export const DeleteButton = styled.button`
     }
 `;
 
-export const CardHeader = styled.div`
+export const CommentHeader = styled.div`
     display: flex;
     flex-wrapp: wrapp;
     justify-content: space-between;
@@ -29,14 +29,6 @@ export const CardHeader = styled.div`
     margin-bottom: 5px;
 `;
 
-export const CardTitle = styled.div`
-    cursor: pointer;
-    font-weight: bold;
-    &:hover {
-        opacity: 0.6;
-    }
-    a {
-        text-decoration: none;
-        color: black;
-    }
+export const CommentText = styled.div`
+    font-style: italic;
 `;

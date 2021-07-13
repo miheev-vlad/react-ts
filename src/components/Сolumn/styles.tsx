@@ -11,6 +11,7 @@ export const ColumnContainer = styled.div`
 export const TitleInput = styled.input`
     padding: 5px;
     border: 0;
+    font-size: 1.1rem;
 `;
 
 export const CardTitleInput = styled.input`
