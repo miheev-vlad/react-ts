@@ -14,7 +14,7 @@ export const ModalLayout = styled.div`
 
 export const ModalContainer = styled.div`
   display: block;
-  padding: 5px;
+  padding: 10px;
   overflow: auto;
 `;
 
@@ -31,9 +31,12 @@ export const CloseButton = styled.button`
 `;
 
 export const CardTitle = styled.input`
-  padding: 5px;
+  padding: 5px 5px 5px 0;
   border: 0;
   font-size: 1.1rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
 `;
 
 export const CommentInput = styled.input`
@@ -48,4 +51,21 @@ export const CommentAddButton = styled.button`
 
 export const ModalSection = styled.section`
   margin-bottom: 15px;
+`;
+
+export const CardInfo = styled.section`
+  p {
+    margin-bottom: 10px;
+  }
+  button {
+    padding: 5px;
+    cursor: pointer;
+    color: #fff;
+    background: #fcc7c3;
+    border: 0;
+    border-radius: 5px;
+    &:hover {
+      background: #f66257;
+    }
+  }
 `;

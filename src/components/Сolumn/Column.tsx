@@ -75,6 +75,7 @@ const Column = ({ defaultName, identifier }: Props) => {
           clickLayout={clickLayout}
           cardInModal={cardInModal}
           columnInModal={columnInModal}
+          setCardsList={setCardsList}
         />
       )}
       <Section>

@@ -5,19 +5,19 @@ export const CommentLayout = styled.div`
   border-radius: 10px;
   margin-bottom: 15px;
   padding: 5px;
-  background: #f8f8ff;
+  background: #fafafa;
 `;
 
 export const DeleteButton = styled.button`
   color: #fff;
-  background: #dc143c;
+  background: #faa19b;
   cursor: pointer;
   padding: 5px;
   width: 30px;
   height: 30px;
   border: 0;
   &:hover {
-    opacity: 0.6;
+    background: #f88279;
   }
 `;
 
@@ -29,6 +29,8 @@ export const CommentHeader = styled.div`
   margin-bottom: 5px;
 `;
 
-export const CommentText = styled.div`
+export const CommentText = styled.input`
   font-style: italic;
+  border: 0;
+  background: #fafafa;
 `;

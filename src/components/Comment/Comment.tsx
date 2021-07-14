@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { IComments } from '../../Interfaces';
 import {
   CommentHeader,
   CommentLayout,
@@ -5,15 +7,30 @@ import {
   DeleteButton,
 } from './styles';
 
-const Comment = () => {
+interface Props {
+  item: IComments;
+  updateCommentText(id: string, text: string): void;
+}
+
+const Comment = ({ item, updateCommentText }: Props) => {
+  const [commentText, setCommentText] = useState(item.commentText);
   return (
     <CommentLayout>
       <CommentHeader>
-        <CommentText>text</CommentText>
+        <CommentText
+          type="text"
+          name=""
+          id={commentText}
+          value={commentText}
+          onChange={(e) => {
+            setCommentText(e.target.value);
+            updateCommentText(item.id, e.target.value);
+          }}
+        />
         <DeleteButton>x</DeleteButton>
       </CommentHeader>
       <hr></hr>
-      <p>comments: ...</p>
+      <p>comment author: {item.userName}</p>
     </CommentLayout>
   );
 };

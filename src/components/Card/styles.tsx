@@ -10,14 +10,14 @@ export const CardLayout = styled.div`
 
 export const DeleteButton = styled.button`
   color: #fff;
-  background: #dc143c;
+  background: #faa19b;
   cursor: pointer;
   padding: 5px;
   width: 30px;
   height: 30px;
   border: 0;
   &:hover {
-    opacity: 0.6;
+    background: #f88279;
   }
 `;
 
