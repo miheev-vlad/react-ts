@@ -4,11 +4,18 @@ import { CardHeader, CardLayout, CardTitle, DeleteButton } from './styles';
 interface Props {
   card: ICard;
   identifier: string;
-  deleteCard(cardNameToDelete: string): void;
+  deleteCardHandler(cardNameToDelete: string): void;
   clickCardTitle(event: any): void;
+  commentsNum: number;
 }
 
-const Card = ({ card, identifier, deleteCard, clickCardTitle }: Props) => {
+const Card = ({
+  card,
+  identifier,
+  deleteCardHandler,
+  clickCardTitle,
+  commentsNum,
+}: Props) => {
   return (
     <CardLayout>
       <CardHeader>
@@ -17,10 +24,12 @@ const Card = ({ card, identifier, deleteCard, clickCardTitle }: Props) => {
             {card.cardName}
           </a>
         </CardTitle>
-        <DeleteButton onClick={() => deleteCard(card.cardName)}>x</DeleteButton>
+        <DeleteButton onClick={() => deleteCardHandler(card.cardName)}>
+          x
+        </DeleteButton>
       </CardHeader>
       <hr></hr>
-      <p>comments: {card.comments.length}</p>
+      <p>comments: {commentsNum}</p>
     </CardLayout>
   );
 };

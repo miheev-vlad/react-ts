@@ -10,9 +10,10 @@ import {
 interface Props {
   item: IComments;
   updateCommentText(id: string, text: string): void;
+  deleteComment(comTxt: string): void;
 }
 
-const Comment = ({ item, updateCommentText }: Props) => {
+const Comment = ({ item, updateCommentText, deleteComment }: Props) => {
   const [commentText, setCommentText] = useState(item.commentText);
   return (
     <CommentLayout>
@@ -27,7 +28,9 @@ const Comment = ({ item, updateCommentText }: Props) => {
             updateCommentText(item.id, e.target.value);
           }}
         />
-        <DeleteButton>x</DeleteButton>
+        <DeleteButton onClick={() => deleteComment(commentText)}>
+          x
+        </DeleteButton>
       </CommentHeader>
       <hr></hr>
       <p>comment author: {item.userName}</p>

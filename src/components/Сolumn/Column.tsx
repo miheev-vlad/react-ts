@@ -27,25 +27,32 @@ const Column = ({ defaultName, identifier }: Props) => {
   );
   const [cardInModal, setCardInModal] = useState<string>('');
   const [columnInModal, setColumnInModal] = useState<string>('');
+  const [commentsNum, setCommentsNum] = useState<number>(0);
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setCardName(event.target.value);
   };
-  const addCard = (): void => {
+  const addCard = (titleStr: string): void => {
     const userName = localStorage.getItem('userName')!;
-    const newCard = {
-      cardName,
-      userName,
-      comments: [],
-      description: '',
-      columnName: identifier,
-    };
-    setCardsList([...cardsList, newCard]);
-    setCardName('');
+    const cardNameArr = cardsList.filter((card) => card.cardName === titleStr);
+    if (!cardNameArr.length) {
+      const newCard = {
+        cardName,
+        userName,
+        comments: [],
+        description: '',
+        columnName: identifier,
+      };
+      setCardsList([...cardsList, newCard]);
+      setCardName('');
+    } else {
+      window.alert('A card with this title already exists');
+    }
   };
-  const deleteCard = (cardNameToDelete: string): void => {
-    setCardsList(
-      cardsList.filter((card) => card.cardName !== cardNameToDelete),
+  const deleteCardHandler = (cardNameToDelete: string): void => {
+    const filterCardArr = cardsList.filter(
+      (card) => card.cardName !== cardNameToDelete,
     );
+    setCardsList(filterCardArr);
   };
   const clickCardTitle = (event: any): void => {
     event.preventDefault();
@@ -76,6 +83,7 @@ const Column = ({ defaultName, identifier }: Props) => {
           cardInModal={cardInModal}
           columnInModal={columnInModal}
           setCardsList={setCardsList}
+          setCommentsNum={setCommentsNum}
         />
       )}
       <Section>
@@ -98,7 +106,7 @@ const Column = ({ defaultName, identifier }: Props) => {
           placeholder="Card title..."
           onChange={handleChange}
         />
-        <CardAddButton onClick={addCard} disabled={!cardName}>
+        <CardAddButton onClick={() => addCard(cardName)} disabled={!cardName}>
           Add Card
         </CardAddButton>
       </Section>
@@ -108,9 +116,10 @@ const Column = ({ defaultName, identifier }: Props) => {
             <Card
               key={key}
               card={item}
-              deleteCard={deleteCard}
+              deleteCardHandler={deleteCardHandler}
               clickCardTitle={clickCardTitle}
               identifier={identifier}
+              commentsNum={commentsNum}
             />
           );
         })}

@@ -17,6 +17,7 @@ interface Props {
   cardInModal: string;
   columnInModal: string;
   setCardsList(cardsList: ICard[]): void;
+  setCommentsNum(num: number): void;
 }
 
 const Modal = ({
@@ -24,6 +25,7 @@ const Modal = ({
   cardInModal,
   columnInModal,
   setCardsList,
+  setCommentsNum,
 }: Props) => {
   const cardsArr = [
     ...JSON.parse(localStorage.getItem(`${columnInModal} cards`)!),
@@ -88,6 +90,7 @@ const Modal = ({
     );
     setCardsList(updateCardsArr);
     setCommentText('');
+    setCommentsNum(comments.length);
   };
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setCommentText(event.target.value);
@@ -108,6 +111,23 @@ const Modal = ({
       JSON.stringify(updateCardsArr),
     );
     setCardsList(updateCardsArr);
+  };
+  const deleteComment = (comTxt: string): void => {
+    const filterComArr = comments.filter(
+      (com: any) => com.commentText !== comTxt,
+    );
+    setComments(filterComArr);
+    setCommentsNum(filterComArr.length);
+    updateCardsArr.forEach((item) => {
+      if (item.cardName === cardName) {
+        item.comments = filterComArr;
+      }
+    });
+    setUpdateCardsArr(updateCardsArr);
+    localStorage.setItem(
+      `${columnInModal} cards`,
+      JSON.stringify(updateCardsArr),
+    );
   };
   return (
     <ModalLayout>
@@ -164,6 +184,7 @@ const Modal = ({
                 key={key}
                 item={item}
                 updateCommentText={updateCommentText}
+                deleteComment={deleteComment}
               />
             );
           })}
