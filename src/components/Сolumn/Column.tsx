@@ -91,7 +91,7 @@ const Column = ({ defaultName, identifier }: Props) => {
           type="text"
           name=""
           id={columnName}
-          value={columnName || defaultName}
+          value={columnName}
           onChange={(ev) => {
             setColumnName(ev.target.value);
           }}
